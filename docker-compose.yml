@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:16.2
+    container_name: todo-list-postgres
+    hostname: todo-list-database
+    restart: unless-stopped
+    volumes:
+      - "todo-list-database:/var/lib/postgresql/data"
+    environment:
+      PORT: "8000"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "todolist"
+    ports:
+      - "127.0.0.1:5432:5432"
+
+volumes:
+  todo-list-database:
